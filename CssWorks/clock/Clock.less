@@ -1,0 +1,120 @@
+@width: 300px;
+@height: 300px;
+
+.clock {
+    width: @width;
+    height: @height;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid red;
+    box-shadow: 0 0 0 3px green,
+        0 0 2px 5px purple,
+        0 0 2px 5px goldenrod;
+}
+
+.resrt() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mark {
+    .resrt();
+
+    li {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        width: 10px;
+        height: 20px;
+        transform-origin: 0% 700%;
+    }
+}
+
+.circle {
+    width: @width;
+    height: @height;
+    position: relative;
+    .resrt();
+
+    li {
+        width: 1px;
+        height: 3px;
+        position: absolute;
+        left: 149px;
+        top: 0px;
+        transform-origin: 1px 150px;
+        background-color: #000000;
+    }
+}
+
+.hand-wrap {
+    position: absolute;
+    width: @width;
+    height: @height;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:before {
+        content: '';
+        z-index: 50;
+        display: block;
+        position: absolute;
+        left: 149px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 15px;
+        height: 15px;
+        background: silver;
+        border-radius: 50%;
+    }
+
+    .hand-hour {
+        width: 1px;
+        height: 60px;
+        position: absolute;
+        left: 147px;
+        top: 90px;
+        transform-origin: 3px bottom;
+        z-index: 40;
+        border-left: 5px solid green;
+        animation: round linear infinite 43200s;
+    }
+
+    .hand-minute {
+        width: 1px;
+        height: 100px;
+        position: absolute;
+        left: 148px;
+        top: 50px;
+        transform-origin: 2px bottom;
+        z-index: 30;
+        border-left: 3px solid red;
+        animation: round linear infinite 3600s
+    }
+
+    .hand-second {
+        width: 1px;
+        height: 130px;
+        position: absolute;
+        left: 149px;
+        top: 20px;
+        transform-origin: 1px bottom;
+        z-index: 20;
+        border-left: 1px solid blue;
+        animation: round steps(60, end) infinite 60s;
+    }
+    
+}
+@keyframes round {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+  }
