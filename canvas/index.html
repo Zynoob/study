@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>涂鸦板</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="drawing-board"></canvas>
+    <div class="color-group">
+        <div class="background-color" title="背景色">背景色</div>
+        <div class="bgcolor-input">
+            <input type="text" id="bgcolor-input" placeholder="'ffffff'或者'fff'">
+            <button id="btn1">应用</button>
+        </div>
+        <div class="brush-color" title="前景色">前景色</div>
+        <div class="color-input">
+            <input type="text" id="color-input" placeholder="'ffffff'或者'fff'">
+            <button id="btn2">应用</button>
+        </div>
+    </div>
+    <div id="range-wrap"><input type="range" id="range" min="1" max="30" value="5" title="调整笔刷粗细"></div>
+    <div class="tools">
+        <button id="brush" class="active" title="画笔"><i class="iconfont icon-huahua"></i></button>
+        <button id="eraser" title="橡皮擦"><i class="iconfont icon-xiangpica"></i></button>
+        <button id="clear" title="清空"><i class="iconfont icon-qingkong"></i></button>
+        <button id="undo" title="撤销"><i class="iconfont icon-withdraw"></i></button>
+        <button id="save" title="保存"><i class="iconfont icon-baocun"></i></button>
+    </div>
+</body>
+<script src="main.js"></script>
+
+</html>
