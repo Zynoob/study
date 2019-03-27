@@ -8,4 +8,7 @@
 - 保存成图片
 - 兼容移动端（支持触摸）
 
+####存在问题
+- 未解决单击左键画圆
+
 最终效果：[https://zynoob.github.io/study/canvas](https://zynoob.github.io/study/canvas)

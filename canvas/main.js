@@ -12,8 +12,8 @@ let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let changeBgColor = document.getElementById("bgcolor-input"); //输入背景色的input
 let changeColor = document.getElementById("color-input"); //输入前景色的input
-let one = document.getElementsByClassName("background-color")[0];//背景色
-let two = document.getElementsByClassName("brush-color")[0];//前景色
+let one = document.getElementsByClassName("background-color")[0]; //背景色
+let two = document.getElementsByClassName("brush-color")[0]; //前景色
 let bgDiv = document.getElementsByClassName("bgcolor-input")[0];
 let brushDiv = document.getElementsByClassName("color-input")[0];
 
@@ -23,6 +23,8 @@ let clear = false; //表示是否为橡皮擦状态下
 let lWidth = 4; //线宽度
 let onestatu = false; //对应bgDiv的显示状态
 let twostatu = false; //对应brushDiv的显示状态
+let historyData = [];
+let firstDot; //保存画布图像数据变量
 
 autoSetSize(canvas);
 
@@ -95,12 +97,13 @@ function listenToUser(canvas) {
                 "y": y
             };
             ctx.save();
-            drawCircle(x, y, 0);
+            drawCircle(x, y);
         };
         canvas.ontouchmove = function (e) {
             if (painting) {
                 let x = e.touches[0].clientX;
                 let y = e.touches[0].clientY;
+                e.preventDefault();
                 let newPoint = {
                     "x": x,
                     "y": y
@@ -115,8 +118,8 @@ function listenToUser(canvas) {
         }
     } else {
         canvas.onmousedown = function (e) {
-            this.firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height); //在这里储存绘图表面
-            saveData(this.firstDot);
+            firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height); //在这里储存绘图表面
+            saveData(firstDot);
             painting = true;
             let x = e.clientX;
             let y = e.clientY;
@@ -125,7 +128,7 @@ function listenToUser(canvas) {
                 "y": y
             };
             ctx.save();
-            drawCircle(x, y, 0);
+            drawCircle(x, y);
         };
         canvas.onmousemove = function (e) {
             if (painting) {
@@ -144,16 +147,16 @@ function listenToUser(canvas) {
             painting = false;
         };
 
-        canvas.mouseleave = function () {
+        canvas.onmouseleave = function () {
             painting = false;
         }
     }
 }
 
-function drawCircle(x, y, radius) {
+function drawCircle(x, y) {
     ctx.save();
     ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.arc(x, y, 0, 0, Math.PI * 2);
     ctx.fill();
     if (clear) {
         ctx.strokeStyle = "#" + bgColor;
@@ -166,14 +169,14 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
     ctx.lineWidth = lWidth;
-    ctx.lineCap = "butt";
+    ctx.lineCap = "round";
     ctx.lineJoin = "round";
     if (clear) {
         ctx.save();
         ctx.globalCompositeOperation = "source-atop";
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = "#" + bgColor;
+        ctx.strokeStyle = "#" + bgColor; //使橡皮擦颜色为背景色
         ctx.stroke();
         ctx.closePath();
         ctx.clip();
@@ -192,14 +195,14 @@ function drawLine(x1, y1, x2, y2) {
 /**
  *
  *判断颜色字符串的合法性
- * @param {String} Verificationcolor
+ * @param {String} verificationColor
  * @returns {Boolean}  
  */
-function colorVerification(Verificationcolor) {
+function colorVerification(verificationColor) {
     let regex3 = /^[0-9a-f]{3}$/i;
     let regex6 = /^[0-9a-f]{6}$/i;
-    let r3 = regex3.test(Verificationcolor.value);
-    let r6 = regex6.test(Verificationcolor.value);
+    let r3 = regex3.test(verificationColor.value);
+    let r6 = regex6.test(verificationColor.value);
     return r3 || r6;
 }
 
@@ -258,6 +261,8 @@ brush.onclick = function () {
 };
 
 reSetCanvas.onclick = function () {
+    firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height); //在这里储存绘图表面
+    saveData(firstDot);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setCanvasBg(bgColor);
 };
@@ -283,9 +288,9 @@ undo.onclick = function () {
     historyData.pop()
 };
 
-let historyData = [];
+
 
 function saveData(data) {
-    (historyData.length === 10) && (historyData.shift()); // 上限为储存10步，太多了怕挂掉
+    (historyData.length === 10) && (historyData.shift()); // 上限为储存10步，左边不成立，右边不执行。
     historyData.push(data);
 }
