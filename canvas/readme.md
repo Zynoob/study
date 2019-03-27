@@ -1,4 +1,4 @@
-首先说一下要实现的功能：
+#### 首先说一下要实现的功能：
 - 切换画笔颜色
 - 切换背景色
 - 调整笔刷粗细
@@ -8,7 +8,9 @@
 - 保存成图片
 - 兼容移动端（支持触摸）
 
-#### 存在问题
+#### 未解决问题
 - 未解决单击左键画圆
+- 当页面重设大小时，页面背景色与前景色会重置，背景色的属性值仍在
 
-最终效果：[https://zynoob.github.io/study/canvas](https://zynoob.github.io/study/canvas)
+#### 最终效果
+[https://zynoob.github.io/study/canvas](https://zynoob.github.io/study/canvas)
