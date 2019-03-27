@@ -28,10 +28,6 @@ let firstDot; //保存画布图像数据变量
 
 autoSetSize(canvas);
 
-setCanvasBg(bgColor);
-
-setBrushColor(color);
-
 listenToUser(canvas);
 
 window.onbeforeunload = function () {
@@ -44,7 +40,9 @@ window.onbeforeunload = function () {
  */
 function autoSetSize(canvas) {
     canvasSetSize();
-
+    setCanvasBg(bgColor);
+    setBrushColor(color);
+    
     function canvasSetSize() {
         let pageWidth = document.documentElement.clientWidth;
         let pageHeight = document.documentElement.clientHeight;
