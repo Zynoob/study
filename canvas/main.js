@@ -42,7 +42,7 @@ function autoSetSize(canvas) {
     canvasSetSize();
     setCanvasBg(bgColor);
     setBrushColor(color);
-    
+
     function canvasSetSize() {
         let pageWidth = document.documentElement.clientWidth;
         let pageHeight = document.documentElement.clientHeight;
@@ -51,8 +51,18 @@ function autoSetSize(canvas) {
         canvas.height = pageHeight;
     }
 
-    window.onresize = function () {
-        canvasSetSize();
+    let state = true;
+    window.onresize = function () {//函数节流，1s内只执行一次
+        if (!state) {
+            return;
+        }
+        state = false;
+        setTimeout(function () {
+            state = true;
+            canvasSetSize();
+            setCanvasBg(bgColor);
+            setBrushColor(color);
+        }, 1000);
     }
 }
 
