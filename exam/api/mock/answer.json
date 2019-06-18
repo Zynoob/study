@@ -1,0 +1,11 @@
+{
+    "paper-id":1,
+    "radio":[
+        {
+        "id":1,
+        "answer":"A"
+        }
+    ],
+    "multiple":[],
+    "judge": []
+}

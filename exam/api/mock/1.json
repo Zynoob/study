@@ -1,0 +1,77 @@
+{
+    "radio": [
+        {
+            "id": "11",
+            "answer": "C",
+            "true_answer":"C",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "12",
+            "answer": "B",
+            "true_answer":"B",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "13",
+            "answer": "B",
+            "true_answer":"B",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "14",
+            "answer": "A",
+            "true_answer":"A",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "15",
+            "answer": "C",
+            "true_answer":"C",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "16",
+            "answer": "B",
+            "true_answer":"B",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "17",
+            "answer": "C",
+            "true_answer":"C",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "18",
+            "answer": "A",
+            "true_answer":"A",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "19",
+            "answer": "A",
+            "true_answer":"A",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        },{
+            "id": "20",
+            "answer": "B",
+            "true_answer":"B",
+            "score": 6,
+            "analysis":"asd",
+            "true_or_false":"t"
+        }
+    ],
+    "multiple": [],
+    "judge": []
+}
