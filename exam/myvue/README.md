@@ -1,29 +1,21 @@
-# myvue
+# 基于PHP与MySQL在线考试系统
 
-## Project setup
+## 开始
+####1.vue
 ```
-npm install
+1. 首先在myvue文件夹中文件 npm install 下载相关依赖
+2. 然后npm run serve (PS：未打包)
 ```
-
-### Compiles and hot-reloads for development
+####2.php
 ```
-npm run serve
+将api文件夹放置于 xampp 的 htdocs 文件夹下
 ```
-
-### Compiles and minifies for production
+####3.mysql
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+将 phpems.sql 引入数据库
 ```
 
-### Lints and fixes files
+## 展示
 ```
-npm run lint
+程序运行截图在 img 文件下
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
